@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- TODO 1 Pick the version of jetty you want. -->
+    <properties>
+        <jetty.version>9.4.6.v20170531</jetty.version>
+    </properties>
+
+    <!-- TODO 2 Configure repo2.maven.org as a repository. -->
+    <repositories>
+        <repository>
+            <id>repo2_maven_org</id>
+            <url>http://repo2.maven.org/maven2</url>
+        </repository>
+    </repositories>
+
+    <!-- TODO 3 Set up dependency to get the jetty-server artifact. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+    </dependencies>
+
+    <groupId>com.my-messenger</groupId>
+    <artifactId>my-messenger</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+</project>
