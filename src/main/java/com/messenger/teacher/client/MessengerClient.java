@@ -27,7 +27,6 @@ import java.util.Scanner;
  */
 public class MessengerClient {
 
-
     /**
      * Механизм логирования позволяет более гибко управлять записью данных в лог (консоль, файл и тд)
      * */
@@ -143,7 +142,7 @@ public class MessengerClient {
      * Отправка сообщения в сокет клиент -> сервер
      */
     public void send(Message msg) throws IOException, ProtocolException {
-//        log.info(msg.toString());
+        log.info(msg.toString());
         out.write(protocol.encode(msg));
         out.flush(); // принудительно проталкиваем буфер с данными
     }
@@ -152,7 +151,7 @@ public class MessengerClient {
 
         MessengerClient client = new MessengerClient();
         client.setHost("localhost");
-        client.setPort(19000);
+        client.setPort(8080);
         client.setProtocol(new StringProtocol());
 
         try {
