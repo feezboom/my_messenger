@@ -18,13 +18,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- TODO 2 Configure repo2.maven.org as a repository. -->
-    <repositories>
-        <repository>
-            <id>repo2_maven_org</id>
-            <url>http://repo2.maven.org/maven2</url>
-        </repository>
-    </repositories>
+    <!--&lt;!&ndash; TODO 2 Configure repo2.maven.org as a repository. &ndash;&gt;-->
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>repo2_maven_org</id>-->
+            <!--<url>http://repo2.maven.org/maven2</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <!-- TODO 3 Set up dependency to get the jemessengerServerrver artifact. -->
     <dependencies>

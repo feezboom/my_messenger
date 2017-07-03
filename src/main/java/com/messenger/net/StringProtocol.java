@@ -8,13 +8,16 @@ import com.messenger.messages.Message;
 import com.messenger.messages.MessageType;
 import com.messenger.messages.TextMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Простейший протокол передачи данных
  */
 public class StringProtocol implements Protocol {
 
-//    static Logger log = LoggerFactory.getLogger(StringProtocol.class);
+    static Logger log = LoggerFactory.getLogger(StringProtocol.class);
 
     public static final String DELIMITER = ";";
 
@@ -53,7 +56,7 @@ public class StringProtocol implements Protocol {
 
 
         }
-//        log.info("encoded: {}", builder.toString());
+        log.info("encoded: {}", builder.toString());
         return builder.toString().getBytes();
     }
 

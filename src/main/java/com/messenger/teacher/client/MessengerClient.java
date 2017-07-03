@@ -3,12 +3,16 @@ package com.messenger.teacher.client;
 /**
  * Created by avk on 03.07.17.
  **/
+
 import com.messenger.messages.Message;
 import com.messenger.messages.MessageType;
 import com.messenger.messages.TextMessage;
 import com.messenger.net.Protocol;
 import com.messenger.net.ProtocolException;
 import com.messenger.net.StringProtocol;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +31,7 @@ public class MessengerClient {
     /**
      * Механизм логирования позволяет более гибко управлять записью данных в лог (консоль, файл и тд)
      * */
-//    static Logger log = LoggerFactory.getLogger(MessengerClient.class);
+    static Logger log = LoggerFactory.getLogger(MessengerClient.class);
 
     /**
      * Протокол, хост и порт инициализируются из конфига
@@ -77,7 +81,7 @@ public class MessengerClient {
         */
         Thread socketListenerThread = new Thread(() -> {
             final byte[] buf = new byte[1024 * 64];
-//            log.info("Starting listener thread...");
+            log.info("Starting listener thread...");
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     // Здесь поток блокируется на ожидании данных
@@ -89,7 +93,7 @@ public class MessengerClient {
                         onMessage(msg);
                     }
                 } catch (Exception e) {
-//                    log.error("Failed to process connection: {}", e);
+                    log.error("Failed to process connection: {}", e);
                     e.printStackTrace();
                     Thread.currentThread().interrupt();
                 }
@@ -103,7 +107,7 @@ public class MessengerClient {
      * Реагируем на входящее сообщение
      */
     public void onMessage(Message msg) {
-//        log.info("Message received: {}", msg);
+        log.info("Message received: {}", msg);
     }
 
     /**
@@ -112,7 +116,7 @@ public class MessengerClient {
      */
     public void processInput(String line) throws IOException, ProtocolException {
         String[] tokens = line.split(" ");
-//        log.info("Tokens: {}", Arrays.toString(tokens));
+        log.info("Tokens: {}", Arrays.toString(tokens));
         String cmdType = tokens[0];
         switch (cmdType) {
             case "/login":
@@ -131,7 +135,7 @@ public class MessengerClient {
             // TODO: implement another types from wiki
 
             default:
-//                log.error("Invalid input: " + line);
+                log.error("Invalid input: " + line);
         }
     }
 
@@ -165,11 +169,11 @@ public class MessengerClient {
                 try {
                     client.processInput(input);
                 } catch (ProtocolException | IOException e) {
-//                    log.error("Failed to process user input", e);
+                    log.error("Failed to process user input", e);
                 }
             }
         } catch (Exception e) {
-//            log.error("Application failed.", e);
+            log.error("Application failed.", e);
         } finally {
             if (client != null) {
                 // TODO
