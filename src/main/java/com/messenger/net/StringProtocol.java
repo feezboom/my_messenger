@@ -4,6 +4,7 @@ package com.messenger.net;
  * Created by avk on 03.07.17.
  **/
 
+import com.messenger.messages.ChatMessage;
 import com.messenger.messages.Message;
 import com.messenger.messages.MessageType;
 import com.messenger.messages.TextMessage;
@@ -28,8 +29,8 @@ public class StringProtocol implements Protocol {
         String[] tokens = str.split(DELIMITER);
         MessageType type = MessageType.valueOf(tokens[0]);
         switch (type) {
-            case MSG_TEXT:
-                TextMessage textMsg = new TextMessage();
+            case MSG_TEXT_CHAT:
+                TextMessage textMsg = new ChatMessage("", 0L);
                 textMsg.setSenderId(parseLong(tokens[1]));
                 textMsg.setText(tokens[2]);
                 textMsg.setType(type);
@@ -46,7 +47,7 @@ public class StringProtocol implements Protocol {
         MessageType type = msg.getType();
         builder.append(type).append(DELIMITER);
         switch (type) {
-            case MSG_TEXT:
+            case MSG_TEXT_CHAT:
                 TextMessage sendMessage = (TextMessage) msg;
                 builder.append(String.valueOf(sendMessage.getSenderId())).append(DELIMITER);
                 builder.append(sendMessage.getText()).append(DELIMITER);

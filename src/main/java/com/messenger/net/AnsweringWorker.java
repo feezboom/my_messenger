@@ -19,11 +19,6 @@ public class AnsweringWorker implements Runnable {
         this.outputQueue = outputQueue;
     }
 
-
-    public BlockingQueue<MessageWrapper> getOutputQueue() {
-        return outputQueue;
-    }
-
     @Override
     public void run() {
 
@@ -31,6 +26,7 @@ public class AnsweringWorker implements Runnable {
             MessageWrapper wrapper = this.outputQueue.poll();
             Message msg = wrapper.getMessage();
             Session ssnFrom = wrapper.getSession();
+
 
         }
     }
