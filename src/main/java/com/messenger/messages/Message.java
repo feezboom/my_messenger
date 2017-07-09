@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by avk on 03.07.17.
  **/
 
+
 public abstract class Message implements Serializable {
 
     protected Long id;

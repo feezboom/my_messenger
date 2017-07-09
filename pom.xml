@@ -19,18 +19,22 @@
     </properties>
 
     <dependencies>
+
+        <!--slf4j dependency ?-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.0.13</version>
         </dependency>
 
+        <!--Dependency for logging-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.5</version>
         </dependency>
 
+        <!--For tests-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -38,11 +42,20 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Running server using jetty-->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
         </dependency>
+
+        <!--Serialization / Deserialization of the messages between servemessengerUseruser-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.3</version>
+        </dependency>
+
     </dependencies>
 
     <groupId>com.my-messenger</groupId>

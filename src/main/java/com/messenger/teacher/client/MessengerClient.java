@@ -114,18 +114,17 @@ public class MessengerClient {
      * Формат строки можно посмотреть в вики проекта
      */
     public void processInput(String line) throws IOException, ProtocolException {
-        String[] tokens = line.split(" ");
+        String[] tokens = line.split(" ", 2);
         log.info("Tokens: {}", Arrays.toString(tokens));
         String cmdType = tokens[0];
         switch (cmdType) {
             case "/login":
                 // TODO: реализация
-                break;
+                throw new UnsupportedOperationException();
             case "/help":
                 // TODO: реализация
-                break;
+                throw new UnsupportedOperationException();
             case "/text":
-                // FIXME: пример реализации для простого текстового сообщения
                 TextMessage sendMessage = new TextMessage();
                 sendMessage.setType(MessageType.MSG_TEXT);
                 sendMessage.setText(tokens[1]);
@@ -144,7 +143,7 @@ public class MessengerClient {
     public void send(Message msg) throws IOException, ProtocolException {
         log.info(msg.toString());
         out.write(protocol.encode(msg));
-        out.flush(); // принудительно проталкиваем буфер с данными
+        out.flush();
     }
 
     public static void main(String[] args) throws Exception {

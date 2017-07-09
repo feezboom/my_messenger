@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Простое текстовое сообщение
  */
-public class TextMessage extends Message {
+public abstract class TextMessage extends Message {
     private String text;
 
     public String getText() {
