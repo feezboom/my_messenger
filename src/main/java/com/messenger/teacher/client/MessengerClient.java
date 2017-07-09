@@ -4,9 +4,7 @@ package com.messenger.teacher.client;
  * Created by avk on 03.07.17.
  **/
 
-import com.messenger.messages.Message;
-import com.messenger.messages.MessageType;
-import com.messenger.messages.TextMessage;
+import com.messenger.messages.*;
 import com.messenger.net.Protocol;
 import com.messenger.net.ProtocolException;
 import com.messenger.net.StringProtocol;
@@ -125,12 +123,11 @@ public class MessengerClient {
                 // TODO: реализация
                 throw new UnsupportedOperationException();
             case "/text":
-                TextMessage sendMessage = new TextMessage();
-                sendMessage.setType(MessageType.MSG_TEXT);
-                sendMessage.setText(tokens[1]);
+                TextMessage sendMessage = new ChatMessage(tokens[1], 0L);
+                sendMessage.setType(MessageType.MSG_TEXT_CHAT);
                 send(sendMessage);
                 break;
-            // TODO: implement another types from wiki
+            // TODO: implement other types from wiki
 
             default:
                 log.error("Invalid input: " + line);

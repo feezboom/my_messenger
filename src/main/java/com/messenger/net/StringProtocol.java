@@ -7,8 +7,6 @@ package com.messenger.net;
 import com.messenger.messages.ChatMessage;
 import com.messenger.messages.Message;
 import com.messenger.messages.MessageType;
-import com.messenger.messages.TextMessage;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,11 +28,13 @@ public class StringProtocol implements Protocol {
         MessageType type = MessageType.valueOf(tokens[0]);
         switch (type) {
             case MSG_TEXT_CHAT:
-                TextMessage textMsg = new ChatMessage("", 0L);
-                textMsg.setSenderId(parseLong(tokens[1]));
-                textMsg.setText(tokens[2]);
-                textMsg.setType(type);
-                return textMsg;
+                ChatMessage chatMsg = new ChatMessage("", 0L);
+                chatMsg.setSenderId(parseLong(tokens[1]));
+                chatMsg.setText(tokens[2]);
+                chatMsg.setType(type);
+                chatMsg.setChatId(parseLong(tokens[3]));
+
+                return chatMsg;
             default:
                 throw new ProtocolException("Invalid type: " + type);
         }
@@ -48,9 +48,10 @@ public class StringProtocol implements Protocol {
         builder.append(type).append(DELIMITER);
         switch (type) {
             case MSG_TEXT_CHAT:
-                TextMessage sendMessage = (TextMessage) msg;
+                ChatMessage sendMessage = (ChatMessage) msg;
                 builder.append(String.valueOf(sendMessage.getSenderId())).append(DELIMITER);
                 builder.append(sendMessage.getText()).append(DELIMITER);
+                builder.append(sendMessage.getChatId()).append(DELIMITER);
                 break;
             default:
                 throw new ProtocolException("Invalid type: " + type);
